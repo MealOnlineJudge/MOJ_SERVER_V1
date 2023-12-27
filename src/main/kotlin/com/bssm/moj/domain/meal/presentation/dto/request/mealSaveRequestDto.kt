@@ -1,15 +1,16 @@
-package com.bssm.moj.domain.meal.presentation.dto.request
-
 import com.bssm.moj.domain.meal.domain.Meal
 import com.bssm.moj.domain.meal.domain.type.daily
 import java.time.LocalDate
 
-class mealSaveRequestDto(
+data class mealSaveRequestDto(
+    val dailyType: daily,
     val date: LocalDate,
-    val dailyType: daily
-) fun mealSaveRequestDto.toEntity(): Meal {
+    val food: String
+)
+fun mealSaveRequestDto.toEntity(): Meal {
     return Meal.saveMeal(
-        date = date,
-        dailyType = dailyType
+        date = this.date,
+        dailyType = this.dailyType,
+        food = this.food
     )
 }
