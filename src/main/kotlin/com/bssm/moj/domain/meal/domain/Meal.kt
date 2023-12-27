@@ -11,7 +11,7 @@ import jakarta.persistence.Id
 import java.time.LocalDate
 
 @Entity
-class meal private constructor(
+class Meal private constructor(
     date: LocalDate,
     dailyType: daily,
 ) {
@@ -27,4 +27,16 @@ class meal private constructor(
     @Enumerated(EnumType.STRING)
     var dailyType: daily = dailyType
         protected set
+
+    companion object {
+        fun saveMeal(
+            date: LocalDate,
+            dailyType: daily
+        ): Meal {
+            return Meal(
+                date = date,
+                dailyType = dailyType
+            )
+        }
+    }
 }
