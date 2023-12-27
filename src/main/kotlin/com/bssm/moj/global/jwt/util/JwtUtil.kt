@@ -28,12 +28,12 @@ class JwtUtil(
         return null
     }
     fun getJwt(token: String): Jws<Claims> {
-        return Jwts.parserBuilder().setSigningKey(jwtProperties.secret).build().parseClaimsJws(token)
+        return Jwts.parserBuilder().setSigningKey(jwtProperties.secretKey).build().parseClaimsJws(token)
     }
 
     fun getJws(token: String?): Jws<Claims> {
         return try {
-            Jwts.parserBuilder().setSigningKey(jwtProperties.secret).build()
+            Jwts.parserBuilder().setSigningKey(jwtProperties.secretKey).build()
                 .parseClaimsJws(token)
         } catch (e: ExpiredJwtException) {
             throw MOJException(ErrorCode.EXPIRED_JWT)

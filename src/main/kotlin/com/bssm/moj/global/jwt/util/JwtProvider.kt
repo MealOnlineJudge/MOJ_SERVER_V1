@@ -46,7 +46,7 @@ class JwtProvider(
             .setHeaderParam("type", type)
             .claim("role", role)
             .claim("id", authId)
-            .signWith(SignatureAlgorithm.HS256, jwtProperties.secret)
+            .signWith(jwtProperties.secretKey,SignatureAlgorithm.HS256)
             .setExpiration(Date(System.currentTimeMillis() + time * 1000))
             .compact()
     }

@@ -79,6 +79,7 @@ enum class ErrorCode(
 
     //CheckIN
     ALREADY_CHECKIN(400, "CheckIn-400-1", "Already checkIn"),
-    CHECKIN_NOTFOUND(404, "CheckIn-404-1", "CheckIn Not Found");
+    CHECKIN_NOTFOUND(404, "CheckIn-404-1", "CheckIn Not Found"),
+    REVIEW_NOT_FOUND(400, "review-404-1", "Review Not Found");
 
 }

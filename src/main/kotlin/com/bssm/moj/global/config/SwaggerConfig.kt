@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration
 
 
 @Configuration
-class Swagger2Config {
+class SwaggerConfig {
 
     @Bean
     fun publicApi(): GroupedOpenApi {
