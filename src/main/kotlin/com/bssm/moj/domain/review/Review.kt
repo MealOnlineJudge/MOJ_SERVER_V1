@@ -1,5 +1,6 @@
 package com.bssm.moj.domain.review
 
+import com.bssm.moj.domain.BaseTimeEntity.BaseDateTime
 import com.bssm.moj.domain.meal.domain.Meal
 import com.bssm.moj.domain.user.User
 import jakarta.persistence.*
@@ -10,7 +11,7 @@ class Review(
     rating: Double,
     user: User,
     meal: Meal,
-) {
+):BaseDateTime() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0L
