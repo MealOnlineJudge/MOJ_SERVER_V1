@@ -9,16 +9,16 @@ import leehj050211.bsmOauth.dto.resource.BsmUserResource
 import leehj050211.bsmOauth.exception.BsmOAuthCodeNotFoundException
 import leehj050211.bsmOauth.exception.BsmOAuthInvalidClientException
 import leehj050211.bsmOauth.exception.BsmOAuthTokenNotFoundException
+import org.springframework.stereotype.Service
 import team.untitled.unboxingBackend.domain.user.authority.Authority
 import java.io.IOException
 import java.util.*
 
-
+@Service
 class UserSaveService(
     private val bsmOauth: BsmOauth,
-    private val userRepo: UserRepo
+    private val userRepo: UserRepo,
 ) {
-
 
     @Throws(IOException::class)
     fun execute(authId: String?): User {
@@ -48,10 +48,9 @@ class UserSaveService(
             resource.student.enrolledAt,
             resource.student.grade,
             resource.student.classNo,
-            resource.student.studentNo,
+            resource.student.studentNo
         )
 
         return userRepo.save(user)
     }
 }
-

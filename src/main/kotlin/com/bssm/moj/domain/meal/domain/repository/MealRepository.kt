@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository
 import java.time.LocalDate
 import java.util.Optional
 
-interface MealRepository : JpaRepository<Meal,Long> {
+interface MealRepository : JpaRepository<Meal, Long> {
     fun findByDate(date: LocalDate): Optional<Meal>
 }

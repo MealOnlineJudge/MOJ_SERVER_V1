@@ -6,7 +6,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.bind.ConstructorBinding
 import javax.crypto.SecretKey
 
-
 @ConfigurationProperties(prefix = "auth.jwt")
 class JwtProperties @ConstructorBinding constructor(
     val header: String,
@@ -14,6 +13,6 @@ class JwtProperties @ConstructorBinding constructor(
     val accessExp: Long,
     val refreshExp: Long,
     val prefix: String,
-){
-    val secretKey: SecretKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
+) {
+    val secretKey: SecretKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret))
 }

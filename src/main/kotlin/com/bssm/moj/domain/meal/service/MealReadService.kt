@@ -17,8 +17,7 @@ class MealReadService(
     val dateFormatter = DateTimeFormatter.ofPattern("yyyyMMdd")
 
     fun getMealByDate(date: String?): Meal {
-        val date = if (date == null ) LocalDate.now() else LocalDate.parse(date, dateFormatter)
+        val date = if (date == null) LocalDate.now() else LocalDate.parse(date, dateFormatter)
         return mealRepository.findByDate(date).orElseThrow { MOJException(ErrorCode.MEAL_NOT_FOUND) }
     }
-
 }

@@ -1,10 +1,10 @@
 package com.bssm.moj.global.utils
 
-import org.springframework.security.core.context.SecurityContextHolder
 import com.bssm.moj.domain.user.User
 import com.bssm.moj.global.exception.ErrorCode
 import com.bssm.moj.global.exception.MOJException
 import com.bssm.moj.global.security.auth.AuthDetails
+import org.springframework.security.core.context.SecurityContextHolder
 
 class SecurityUtils {
     companion object {

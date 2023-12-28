@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service
 
 @Service
 class AuthDetailService(
-    val userRepo: UserRepo
+    val userRepo: UserRepo,
 ) {
-    fun loadByUsername(id: Long):UserDetails{
-        val user: User =  userRepo.findById(id).orElseThrow();
+    fun loadByUsername(id: Long): UserDetails {
+        val user: User = userRepo.findById(id).orElseThrow()
         return AuthDetails(user)
     }
 }

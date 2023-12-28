@@ -60,7 +60,6 @@ class MealService(
 
                 mealList.add(meal)
             }
-
         }
         mealRepository.saveAll(mealList.map { it.toEntity() })
     }

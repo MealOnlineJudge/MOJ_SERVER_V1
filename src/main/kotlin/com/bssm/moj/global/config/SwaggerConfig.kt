@@ -6,8 +6,6 @@ import org.springdoc.core.models.GroupedOpenApi
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
-
-
 @Configuration
 class SwaggerConfig {
 
@@ -16,16 +14,16 @@ class SwaggerConfig {
         return GroupedOpenApi.builder()
             .group("v1-definition")
             .pathsToMatch("/**")
-            .build();
+            .build()
     }
+
     @Bean
     fun springShopOpenAPI(): OpenAPI {
-        return  OpenAPI()
+        return OpenAPI()
             .info(
                 Info().title("Moj API")
-                .description("Meal Online Judge API 명세서입니다.")
-                .version("v0.0.1")
+                    .description("Meal Online Judge API 명세서입니다.")
+                    .version("v0.0.1")
             )
     }
 }
-

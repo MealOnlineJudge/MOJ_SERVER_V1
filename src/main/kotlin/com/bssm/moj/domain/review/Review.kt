@@ -6,9 +6,9 @@ import jakarta.persistence.*
 
 @Entity
 class Review(
-    content:String,
+    content: String,
     rating: Double,
-    user:User,
+    user: User,
     meal: Meal,
 ) {
     @Id
@@ -32,6 +32,4 @@ class Review(
         foreignKey = ForeignKey(name = "FK_REVIEW_MEAL_ID")
     )
     val meal: Meal = meal
-
-
 }

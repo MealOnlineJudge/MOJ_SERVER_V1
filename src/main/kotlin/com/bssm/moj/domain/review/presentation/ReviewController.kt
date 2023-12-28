@@ -19,13 +19,15 @@ class ReviewController(
     private val reviewService: ReviewService,
 ) {
     @GetMapping
-    fun getReviewByMealId(@RequestParam mealId:Long): List<Review> {
+    fun getReviewByMealId(@RequestParam mealId: Long): List<Review> {
         return reviewService.getReviewByMealId(mealId)
     }
+
     @PostMapping
     fun createReview(@RequestBody createReviewDto: CreateReviewDto): Long {
         return reviewService.createReview(createReviewDto, SecurityUtils.getUser())
     }
+
     @DeleteMapping("/{id}")
     fun deleteReview(@PathVariable id: Long): Long {
         return reviewService.deleteReview(id)

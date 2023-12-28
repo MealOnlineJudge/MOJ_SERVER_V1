@@ -14,7 +14,7 @@ import java.time.LocalDate
 class Meal private constructor(
     date: LocalDate,
     dailyType: daily,
-    food: String
+    food: String,
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +37,7 @@ class Meal private constructor(
         fun saveMeal(
             date: LocalDate,
             dailyType: daily,
-            food: String
+            food: String,
         ): Meal {
             return Meal(
                 date = date,

@@ -1,19 +1,18 @@
 package com.bssm.moj.global.jwt.auth
 
 import com.bssm.moj.global.exception.ErrorCode
+import com.bssm.moj.global.exception.MOJException
+import com.bssm.moj.global.jwt.util.JwtUtil
+import com.bssm.moj.global.security.auth.AuthDetailService
 import io.jsonwebtoken.Claims
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Component
-import com.bssm.moj.global.exception.MOJException
-import com.bssm.moj.global.jwt.util.JwtUtil
-import com.bssm.moj.global.security.auth.AuthDetailService
-
 
 @Component
 class JwtAuth(
     val jwtUtil: JwtUtil,
-    val authDetailService: AuthDetailService
+    val authDetailService: AuthDetailService,
 ) {
     fun authentication(token: String): UsernamePasswordAuthenticationToken {
         val claims: Claims = jwtUtil.getJwt(token).body

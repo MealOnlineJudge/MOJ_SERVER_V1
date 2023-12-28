@@ -7,9 +7,7 @@ import com.bssm.moj.global.exception.MOJException
 import com.bssm.moj.global.jwt.dto.TokenResponseDto
 import jakarta.validation.Valid
 import jakarta.validation.constraints.NotBlank
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import java.io.IOException
 
 @RestController
 @RequestMapping("/auth")
@@ -23,10 +21,9 @@ class AuthController(
         return bsmLoginService.execute(userLoginReq.authCode)
     }
 
-
     @PutMapping("refreshToken")
     fun refreshToken(@RequestBody refreshToken: @NotBlank String?): TokenResponseDto {
-        if(refreshToken == null) throw MOJException(ErrorCode.INVALID_ARGUMENT)
+        if (refreshToken == null) throw MOJException(ErrorCode.INVALID_ARGUMENT)
         return refreshTokenService.execute(refreshToken)
     }
 }
