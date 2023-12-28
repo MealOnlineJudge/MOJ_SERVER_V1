@@ -12,3 +12,20 @@ spring:
             hibernate:
                 format_sql: true
                 default_batch_fetch_size: 100
+
+
+auth:
+    jwt:
+        secret: ${JWT_SECRET}
+        accessExp: 86400000
+        refreshExp: 86400000
+        header: Authorization
+        prefix: Bearer
+
+bsm:
+    client_id: ${BSM_CLIENT_ID}
+    client_secret: ${BSM_CLIENT_SECRET}
+
+neis:
+    key: ${NEIS_KEY}
+    mealUrl: ${NEIS_URL}

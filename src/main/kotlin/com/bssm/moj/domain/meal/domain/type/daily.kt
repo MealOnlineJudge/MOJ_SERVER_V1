@@ -5,5 +5,5 @@ enum class daily(
 ) {
     BREAKFAST("조식"),
     LUNCH("중식"),
-    DINNER("석식")
+    DINNER("석식"),
 }

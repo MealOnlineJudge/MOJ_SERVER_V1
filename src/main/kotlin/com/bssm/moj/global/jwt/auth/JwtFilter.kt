@@ -1,15 +1,13 @@
 package com.bssm.moj.global.jwt.auth
 
-import com.bssm.moj.global.jwt.auth.JwtAuth
-import org.springframework.security.core.context.SecurityContextHolder
-import org.springframework.web.filter.OncePerRequestFilter
 import com.bssm.moj.global.jwt.util.JwtUtil
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
+import org.springframework.security.core.context.SecurityContextHolder
+import org.springframework.web.filter.OncePerRequestFilter
 
-
-class JwtFilter(val jwtAuth: JwtAuth, val jwtUtil: JwtUtil): OncePerRequestFilter() {
+class JwtFilter(val jwtAuth: JwtAuth, val jwtUtil: JwtUtil) : OncePerRequestFilter() {
 
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, filterChain: FilterChain) {
         val token: String? = jwtUtil.resolveToken(request)
@@ -23,5 +21,4 @@ class JwtFilter(val jwtAuth: JwtAuth, val jwtUtil: JwtUtil): OncePerRequestFilte
             SecurityContextHolder.getContext().authentication = authentication
         }
     }
-
 }

@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
 
-
 @RestControllerAdvice
 class GlobalExceptionHandler {
     @ExceptionHandler(MOJException::class)
@@ -15,11 +14,11 @@ class GlobalExceptionHandler {
         return ResponseEntity<ExceptionResponse>(
             ExceptionResponse(
                 e.errorCode.status,
-                e.message?:"Unknown Error"
-            ), HttpStatus.valueOf(e.errorCode.status)
+                e.message ?: "Unknown Error"
+            ),
+            HttpStatus.valueOf(e.errorCode.status)
         )
     }
-
 
     @ExceptionHandler(ConstraintViolationException::class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
@@ -39,7 +38,8 @@ class GlobalExceptionHandler {
         }
         return ResponseEntity<ExceptionResponse>(
             ExceptionResponse(
-                500, "Internal Server Error"
+                500,
+                "Internal Server Error"
             ),
             HttpStatus.INTERNAL_SERVER_ERROR
         )

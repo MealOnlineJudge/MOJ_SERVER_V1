@@ -2,17 +2,17 @@ package com.bssm.moj.global.jwt.util
 
 import com.bssm.moj.domain.auth.RefreshToken
 import com.bssm.moj.domain.auth.repo.RefreshTokenRepo
+import com.bssm.moj.global.jwt.dto.TokenResponseDto
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import org.springframework.stereotype.Component
-import com.bssm.moj.global.jwt.dto.TokenResponseDto
 import java.time.ZonedDateTime
 import java.util.*
 
 @Component
 class JwtProvider(
     private val jwtProperties: JwtProperties,
-    private val refreshTokenRepo: RefreshTokenRepo
+    private val refreshTokenRepo: RefreshTokenRepo,
 ) {
 
     fun generateAccessToken(authId: Long, role: String): String {
@@ -37,7 +37,7 @@ class JwtProvider(
             "refresh_token",
             jwtProperties.refreshExp
         )
-        refreshTokenRepo.save(RefreshToken(refreshToken,authId,expiredTime))
+        refreshTokenRepo.save(RefreshToken(refreshToken, authId, expiredTime))
         return TokenResponseDto(accessToken, refreshToken, expiredTime)
     }
 
@@ -46,7 +46,7 @@ class JwtProvider(
             .setHeaderParam("type", type)
             .claim("role", role)
             .claim("id", authId)
-            .signWith(SignatureAlgorithm.HS256, jwtProperties.secret)
+            .signWith(jwtProperties.secretKey, SignatureAlgorithm.HS256)
             .setExpiration(Date(System.currentTimeMillis() + time * 1000))
             .compact()
     }

@@ -8,13 +8,12 @@ import org.springframework.http.MediaType
 import org.springframework.web.filter.OncePerRequestFilter
 import java.io.IOException
 
-
 class ExceptionFilter : OncePerRequestFilter() {
     @Throws(ServletException::class, IOException::class)
     override fun doFilterInternal(
         request: HttpServletRequest,
         response: HttpServletResponse,
-        filterChain: FilterChain
+        filterChain: FilterChain,
     ) {
         try {
             filterChain.doFilter(request, response)
@@ -27,9 +26,10 @@ class ExceptionFilter : OncePerRequestFilter() {
     }
 
     @Throws(IOException::class)
-    private fun writeErrorCode(response: HttpServletResponse, status: Int, message:String) {
+    private fun writeErrorCode(response: HttpServletResponse, status: Int, message: String) {
         val errorResponse = ExceptionResponse(
-            status,message
+            status,
+            message
         )
         response.status = errorResponse.status
         response.characterEncoding = "UTF-8"

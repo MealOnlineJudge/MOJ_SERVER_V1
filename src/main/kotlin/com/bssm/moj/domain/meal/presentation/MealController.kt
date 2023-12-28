@@ -1,16 +1,19 @@
 package com.bssm.moj.domain.meal.presentation
 
-import com.bssm.moj.domain.meal.service.mealService
+import com.bssm.moj.domain.meal.domain.Meal
+import com.bssm.moj.domain.meal.service.MealReadService
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class mealController(
-    private val mealService: mealService,
+@RequestMapping("/meal")
+class MealController(
+    private val mealReadService: MealReadService,
 ) {
-    @GetMapping("/meal/save")
-    fun saveMeal() {
-        mealService.create()
+    @GetMapping
+    fun saveMeal(@RequestParam date: String?): Meal {
+        return mealReadService.getMealByDate(date)
     }
-
 }

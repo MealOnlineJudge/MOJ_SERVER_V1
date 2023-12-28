@@ -5,7 +5,7 @@ import java.time.LocalDate
 data class mealSaveRequestDto(
     val dailyType: daily,
     val date: LocalDate,
-    val food: String
+    val food: String,
 )
 fun mealSaveRequestDto.toEntity(): Meal {
     return Meal.saveMeal(

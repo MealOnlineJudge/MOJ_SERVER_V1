@@ -11,5 +11,5 @@ class RefreshToken(
 
     val userId: Long,
 
-    val expiredAt: ZonedDateTime
+    val expiredAt: ZonedDateTime,
 )
